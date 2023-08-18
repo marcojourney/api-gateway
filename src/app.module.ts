@@ -10,7 +10,7 @@ import { ReportController } from './report.controller';
   controllers: [AppController, OrderController, ReportController],
   providers: [
     {
-      provide: 'BOOKS_SERVICE',
+      provide: 'BOOK_SERVICE',
       inject: [ConfigService],
       useFactory: (configService: ConfigService) => {
         return ClientProxyFactory.create({
