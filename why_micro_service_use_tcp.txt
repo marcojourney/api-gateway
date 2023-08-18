@@ -1,0 +1,18 @@
+Microservices choose to use the TCP protocol to establish each service because it provides a number of advantages, including:
+
+* **Reliable delivery:** TCP guarantees that all data will be delivered to the intended recipient, even if some packets are lost or corrupted. This is important for microservices, as they often need to exchange large amounts of data.
+* **Ordered delivery:** TCP guarantees that the data will be delivered in the same order in which it was sent. This is important for microservices that need to process data in a specific order.
+* **Flow control:** TCP allows the sender to control the rate at which data is sent, so that the receiver does not get overwhelmed. This is important for microservices that need to be able to handle a large number of requests.
+* **Error detection:** TCP detects errors in the data that is being transmitted and requests that the data be resent. This helps to ensure that the data is received correctly.
+
+In addition to these advantages, TCP is a well-known and widely-supported protocol, which makes it easy to implement and use.
+
+However, it is important to note that TCP is not the only protocol that can be used to establish communication between microservices. Other protocols, such as HTTP and UDP, can also be used. The choice of protocol will depend on the specific requirements of the application.
+
+Here are some of the factors that may affect the decision of whether to use TCP or another protocol:
+
+* **The type of data that is being exchanged:** If the data is sensitive or critical, then TCP may be the best choice, as it provides a higher degree of reliability.
+* **The latency requirements:** If the application has strict latency requirements, then UDP may be a better choice, as it is a more lightweight protocol.
+* **The bandwidth requirements:** If the application requires a lot of bandwidth, then TCP may be a better choice, as it provides a more reliable way to transmit large amounts of data.
+
+Ultimately, the decision of whether to use TCP or another protocol is a trade-off between reliability, latency, and bandwidth.

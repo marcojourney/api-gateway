@@ -2,11 +2,12 @@ import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { ClientProxyFactory, Transport } from '@nestjs/microservices';
 import { AppController } from './app.controller';
-// import { AppService } from './app.service';
+import { OrderController } from './order.controller';
+import { ReportController } from './report.controller';
 
 @Module({
   imports: [ConfigModule.forRoot()],
-  controllers: [AppController],
+  controllers: [AppController, OrderController, ReportController],
   providers: [
     {
       provide: 'BOOKS_SERVICE',
@@ -15,13 +16,38 @@ import { AppController } from './app.controller';
         return ClientProxyFactory.create({
           transport: Transport.TCP,
           options: {
-            host: configService.get('BOOKSTORE_SERVICE_HOST'),
-            port: configService.get('BOOKSTORE_SERVICE_PORT')
+            host: '127.0.0.1',
+            port: 3000
           }
         })
       }
+    },
+    {
+      provide: 'ORDERS_SERVICE',
+      inject: [ConfigService],
+      useFactory: (configService: ConfigService) => {
+        return ClientProxyFactory.create({
+          transport: Transport.TCP,
+          options: {
+            host: '127.0.0.1',
+            port: 3001
+          }
+        })
       }
+    },
+    {
+      provide: 'REPORTS_SERVICE',
+      inject: [ConfigService],
+      useFactory: (configService: ConfigService) => {
+        return ClientProxyFactory.create({
+          transport: Transport.TCP,
+          options: {
+            host: '127.0.0.1',
+            port: 3002
+          }
+        })
+      }
+    }
   ]
-  // providers: [AppService],
 })
 export class AppModule {}
