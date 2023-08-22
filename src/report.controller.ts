@@ -3,7 +3,7 @@ import { ClientProxy } from '@nestjs/microservices';
 
 @Controller('reports')
 export class ReportController {
-  constructor(@Inject('REPORTS_SERVICE') private client: ClientProxy) {}
+  constructor(@Inject('REPORT_SERVICE') private client: ClientProxy) {}
 
   @Get('/books')
   getBooksReport() {
