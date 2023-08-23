@@ -1,0 +1,39 @@
+Sure. Message pattern and event pattern are two different ways of communication between microservices.
+
+**Message pattern** is a one-to-one communication pattern, where a message is sent from one microservice to another microservice. 
+The message is typically sent in response to an event, such as a user action or a change in state.
+
+**Event pattern** is a one-to-many communication pattern, where an event is published by a microservice and can be subscribed to by other microservices. 
+The event is typically published in response to a change in state.
+
+Here is a table comparing the two patterns:
+
+| Feature                    | Message pattern    | Event pattern           |
+|----------------------------|--------------------|-------------------------|
+| Communication type         | One-to-one         | One-to-many             |
+| Direction of communication | Sender to receiver | Publisher to subscriber |
+| Trigger                    | Event              | Event                   |
+| Delivery guarantee         | Guaranteed         | Not guaranteed          |
+| Ordering                   | Guaranteed         | Not guaranteed          |
+| Latency                    | Lower              | Higher                  |
+| Bandwidth                  | Lower              | Higher                  |
+| Ease of use                | Easier             | More complex            |
+| Scalability                | Good               | Excellent               |
+
+In general, message pattern is a better choice for applications that require a guaranteed delivery and ordering of messages. 
+Event pattern is a better choice for applications that need to scale easily and do not require a guaranteed delivery or ordering of events.
+
+Here are some examples of when message pattern would be a better choice than event pattern:
+
+* **Sending a notification to a user:** When a user takes an action, such as clicking on a link, 
+a message can be sent to the user's microservice to notify them of the action.
+* **Updating a database:** When a change is made to a database, a message can be sent to the microservice that is responsible for updating the database.
+* **Sending an email:** When an email needs to be sent, a message can be sent to the microservice that is responsible for sending emails.
+
+Here are some examples of when event pattern would be a better choice than message pattern:
+
+* **Tracking changes in state:** When a microservice changes state, an event can be published so that other microservices can be notified of the change.
+* **Triggering a workflow:** When an event is published, a workflow can be triggered to handle the event.
+* **Scaling a system:** When a system needs to be scaled, events can be used to decouple microservices and make it easier to scale the system.
+
+Ultimately, the decision of whether to use message pattern or event pattern depends on the specific requirements of the application.

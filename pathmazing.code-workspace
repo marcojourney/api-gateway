@@ -1,0 +1,20 @@
+{
+	"folders": [
+		{
+			"path": "../nestjs_app"
+		},
+		{
+			"path": "../report"
+		},
+		{
+			"path": "../order"
+		},
+		{
+			"path": "../bookstore"
+		},
+		{
+			"path": "."
+		}
+	],
+	"settings": {}
+}

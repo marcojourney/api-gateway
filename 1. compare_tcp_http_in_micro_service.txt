@@ -1,0 +1,38 @@
+HTTP is also a reliable protocol, but it is not as reliable as TCP. HTTP does not guarantee that all data will be delivered, 
+or that it will be delivered in the same order in which it was sent. However, HTTP is a more lightweight protocol than TCP, 
+and it can be used to transmit smaller amounts of data.
+
+Here is a table comparing the two protocols:
+
+| Feature          | TCP          | HTTP           |
+|------------------|--------------|----------------|
+| Reliability      | Guaranteed   | Not guaranteed |
+| Ordered delivery | Guaranteed   | Not guaranteed |
+| Flow control     | Yes          | No             |
+| Error detection  | Yes          | No             |
+| Latency          | Higher       | Lower          |
+| Bandwidth        | Higher       | Lower          |
+| Ease of use      | More complex | Less complex   |
+| Widely supported | Yes          | Yes            |
+
+In general, TCP is a better choice for applications that require a high degree of reliability, such as financial transactions or email. 
+HTTP is a better choice for applications that do not require as much reliability, such as web browsing or file transfers.
+
+Here are some examples of when TCP would be a better choice than HTTP:
+
+* **Sending financial data:** Financial data is sensitive and critical, so it is important to ensure that it is delivered reliably. 
+TCP can guarantee that all data will be delivered, even if some packets are lost or corrupted.
+* **Sending email:** Email is also sensitive data, and it is important to ensure that it is delivered reliably. 
+TCP can guarantee that all email will be delivered, even if some packets are lost or corrupted.
+* **Streaming video:** Streaming video requires a lot of bandwidth, and TCP can provide a more reliable way to transmit large amounts of data.
+
+Here are some examples of when HTTP would be a better choice than TCP:
+
+* **Web browsing:** Web browsing does not require a high degree of reliability, so HTTP is a good choice. 
+HTTP is also a more lightweight protocol than TCP, so it can be used to improve the performance of web browsing.
+* **File transfers:** File transfers do not require a high degree of reliability, so HTTP is a good choice. 
+HTTP is also a more lightweight protocol than TCP, so it can be used to improve the performance of file transfers.
+* **Real-time applications:** Real-time applications require low latency, so UDP is a better choice than TCP. 
+UDP is a more lightweight protocol than TCP, so it can be used to improve the performance of real-time applications.
+
+Ultimately, the decision of whether to use TCP or HTTP depends on the specific requirements of the application.
