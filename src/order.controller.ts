@@ -7,16 +7,16 @@ export class OrderController {
 
   @Get()
   getAllOrders() {
-    return this.client.send({cmd: 'get_orders'}, {});
+    return this.client.send({ cmd: 'get_orders' }, {});
   }
 
   @Get(':id')
-  getOrderByID(@Param('id') id ) {
-    return this.client.send({cmd: 'get_order'}, id);
+  getOrderByID(@Param('id') id) {
+    return this.client.send({ cmd: 'get_order' }, id);
   }
 
   @Delete(':id')
-  deleteOrderByID(@Param('id') id ) {
-    return this.client.send({cmd: 'delete_order'}, id);
+  deleteOrderByID(@Param('id') id) {
+    return this.client.send({ cmd: 'delete_order' }, id);
   }
 }
