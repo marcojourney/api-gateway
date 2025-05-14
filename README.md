@@ -112,28 +112,10 @@ $ npm run test:cov
 
 ---
 
-### 🧪 Examples
+## 📝 License
 
-```bash
-# Add a proxy for stock service
-feat(stock): add proxy to communicate with StockService
-
-# Fix a bug in authentication
-fix(auth): resolve login token refresh issue
-
-# Update documentation for deployment
-docs(deploy): add instructions for staging environment
-
-
-## Stay in touch
-
-- Author - [Marco Bytes](https://marcojourney.github.io/)
-- Website - [https://nestjs.com](https://marcojourney.github.io/)
-- Twitter - [@nestframework](https://marcojourney.github.io/)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
+This project is licensed under the **CC BY-NC 4.0 License** — for **non-commercial use only**.  
+See the [LICENSE](./LICENSE) file for details.
 
 ## 📚 Resources
 - Conventional Commits Official Site (https://www.conventionalcommits.org/)
