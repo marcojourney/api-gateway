@@ -11,7 +11,7 @@ export class StockProxyController {
     try {
       const responseData = await this.stockHttpService.forwardRequest(
         req.method,
-        req.originalUrl,
+        req.path,
         req.body,
         req.query,
         req.headers,
@@ -22,7 +22,7 @@ export class StockProxyController {
     } catch (error) {
       const status = error.response?.status || 500;
       const message = error.response?.data || 'Internal Server Error';
-      res.status(status).json(message);
+      res.status(status).json({ message });
     }
   }
 }
