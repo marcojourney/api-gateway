@@ -1,5 +1,10 @@
-import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
+import { 
+  MiddlewareConsumer,
+  Module,
+  NestModule
+} from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
+import { CacheModule } from '@nestjs/cache-manager';
 import { HttpModule } from '@nestjs/axios';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import * as http from 'http';
@@ -13,6 +18,7 @@ import { HeaderFilterMiddleware } from './common/middleware/header-filter.middle
 
 @Module({
   imports: [
+    CacheModule.register({ ttl: 5000 }),
     HttpModule.registerAsync({
       imports: [ConfigModule],
       useFactory: async (configService: ConfigService) => ({
