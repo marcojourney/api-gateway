@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
+  <a href="http://nestjs.com/" target="blank"><img src="https://avatars.githubusercontent.com/u/181590366?s=80&v=4" width="200" alt="Nest Logo" /></a>
 </p>
 
 [circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
@@ -58,16 +58,56 @@ $ npm run test:e2e
 $ npm run test:cov
 ```
 
-## Support
+## Conventional Commit Format
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+
+- **type**: the kind of change you're making.
+- **scope** (optional): the area of the codebase the change affects.
+- **summary**: a brief description of the change, written in **imperative mood** (e.g., "add", "fix", not "added" or "fixed").
+
+---
+
+### 🔧 Common Types
+
+| Type     | Description                                      |
+|----------|--------------------------------------------------|
+| `feat`   | A new feature                                     |
+| `fix`    | A bug fix                                         |
+| `docs`   | Documentation changes                             |
+| `style`  | Code style changes (formatting, etc.)             |
+| `refactor` | Code refactoring (no functionality change)     |
+| `test`   | Adding or updating tests                          |
+| `chore`  | Maintenance tasks (build tools, configs, etc.)    |
+| `perf`   | Performance improvements                          |
+| `build`  | Changes that affect the build system              |
+| `ci`     | Changes to CI/CD pipelines                        |
+
+---
+
+### 🧪 Examples
+
+```bash
+# Add a proxy for stock service
+feat(stock): add proxy to communicate with StockService
+
+# Fix a bug in authentication
+fix(auth): resolve login token refresh issue
+
+# Update documentation for deployment
+docs(deploy): add instructions for staging environment
+
 
 ## Stay in touch
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+- Author - [Marco Bytes](https://marcojourney.github.io/)
+- Website - [https://nestjs.com](https://marcojourney.github.io/)
+- Twitter - [@nestframework](https://marcojourney.github.io/)
 
 ## License
 
 Nest is [MIT licensed](LICENSE).
+
+## 📚 Resources
+- Conventional Commits Official Site (https://www.conventionalcommits.org/)
+- Semantic Release (https://semantic-release.gitbook.io/)
+- Git Commit Message Guidelines (Chris Beams) (https://chris.beams.io/posts/git-commit/)

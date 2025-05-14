@@ -3,14 +3,15 @@ import {
   PrimaryGeneratedColumn, 
   Column, 
   CreateDateColumn, 
-  UpdateDateColumn 
+  UpdateDateColumn, 
+  PrimaryColumn
 } from 'typeorm';
 
 @Entity()
 export class Session {
 
-  @PrimaryGeneratedColumn()
-  id: number;
+  @PrimaryColumn({ type: 'binary', length: 16 })
+  id: Buffer;
 
   @Column()
   userId: number;
