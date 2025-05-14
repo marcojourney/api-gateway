@@ -1,7 +1,59 @@
 version: '3.8'
 
 services:
-  book:
-    image: api-gateway
+  mysql:
+    image: mysql:8.0
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: nest_app
+      MYSQL_USER: nest_user
+      MYSQL_PASSWORD: nest_pass
     ports:
-      - 8080:8080
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  api_gateway_v1_0_0:
+    build:
+      context: ./v1.0.0
+    container_name: api_v1_0_0
+    ports:
+      - "3001:3000"
+    depends_on:
+      - mysql
+    environment:
+      DB_HOST: mysql
+      DB_PORT: 3306
+      DB_USER: nest_user
+      DB_PASSWORD: nest_pass
+      DB_NAME: nest_app
+
+  pi_gateway_v1_0_1:
+    build:
+      context: ./v1.0.1
+    container_name: api_v1_0_1
+    ports:
+      - "3002:3000"
+    environment:
+      DB_HOST: mysql
+      DB_PORT: 3306
+      DB_USER: nest_user
+      DB_PASSWORD: nest_pass
+      DB_NAME: nest_app
+
+  pi_gateway_v1_0_2:
+    build:
+      context: ./v1.0.2
+    container_name: api_v1_0_2
+    ports:
+      - "3003:3000"
+    environment:
+      DB_HOST: mysql
+      DB_PORT: 3306
+      DB_USER: nest_user
+      DB_PASSWORD: nest_pass
+      DB_NAME: nest_app
+      
+volumes:
+  mysql_data:
