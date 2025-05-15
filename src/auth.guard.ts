@@ -10,8 +10,8 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { plainToClass } from 'class-transformer';
 import { Request } from 'express';
 import { Repository } from 'typeorm';
-import { TokenPayload } from 'src/types/token.payload';
 import { Session } from './entities/session.entity';
+import { TokenPayload } from './types';
 
 @Injectable()
 export class AuthGuard implements CanActivate {
