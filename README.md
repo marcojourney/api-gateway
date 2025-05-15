@@ -1,11 +1,11 @@
 <p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
+  <a href="http://nestjs.com/" target="blank"><img src="https://avatars.githubusercontent.com/u/181590366?s=400&u=48e6e52f42236e212cdb47a386878fccc77b0345&v=4" width="200" alt="Nest Logo" /></a>
 </p>
 
 [circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
 [circleci-url]: https://circleci.com/gh/nestjs/nest
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
+  <p align="center">ERP HUB API Gateway is a NestJS-based gateway that routes and secures ERP microservice communication.</p>
     <p align="center">
 <a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
 <a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
@@ -22,9 +22,37 @@
   <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
   [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
-## Description
+## 🧭 ERP HUB API Gateway
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+ERP HUB API Gateway is a centralized gateway service built with NestJS to handle and route all incoming requests to microservices within the ERP system. It acts as the single entry point for external clients and internal modules, enforcing security, observability, configuration management, and performance optimization.
+
+## 🧱 Tech Stack
+
+- **NestJS** – Scalable Node.js framework
+- **Axios** via `@nestjs/axios` – For service-to-service HTTP communication
+- **Custom Configuration Service** – Dynamic `.env`-like configs from database
+- **TypeORM** – For database interaction
+- **Redis (Optional)** – For response/config caching
+- **Helmet & Compression** – Security and performance enhancements
+
+## 🔌 Core Features
+
+- ✅ **Dynamic Routing** to stock, HR, accounting, and other services
+- 🔐 **Safe Header Forwarding** to protect downstream services
+- 🧩 **Trace ID Injection** for request tracing across microservices
+- ⚡ **Keep-Alive + Retry**-enabled HTTP clients for performance
+- 🧠 **Centralized Config Table** to manage `.env`-like configs at runtime
+- 🔍 **Request Filtering Middleware** for header and payload hygiene
+- 📈 **Scalable Architecture** designed for enterprise ERP platforms
+
+
+## 📦 Modules Communicated (via HTTP)
+
+- `Stock-Service`
+- `HR-Service`
+- `Accounting-Service`
+- *(More coming soon)*
+
 
 ## Installation
 
@@ -58,16 +86,38 @@ $ npm run test:e2e
 $ npm run test:cov
 ```
 
-## Support
+## Conventional Commit Format
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
 
-## Stay in touch
+- **type**: the kind of change you're making.
+- **scope** (optional): the area of the codebase the change affects.
+- **summary**: a brief description of the change, written in **imperative mood** (e.g., "add", "fix", not "added" or "fixed").
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+---
 
-## License
+### 🔧 Common Types
 
-Nest is [MIT licensed](LICENSE).
+| Type     | Description                                      |
+|----------|--------------------------------------------------|
+| `feat`   | A new feature                                     |
+| `fix`    | A bug fix                                         |
+| `docs`   | Documentation changes                             |
+| `style`  | Code style changes (formatting, etc.)             |
+| `refactor` | Code refactoring (no functionality change)     |
+| `test`   | Adding or updating tests                          |
+| `chore`  | Maintenance tasks (build tools, configs, etc.)    |
+| `perf`   | Performance improvements                          |
+| `build`  | Changes that affect the build system              |
+| `ci`     | Changes to CI/CD pipelines                        |
+
+---
+
+## 📝 License
+
+This project is licensed under the **CC BY-NC 4.0 License** — for **non-commercial use only**.  
+See the [LICENSE](./LICENSE) file for details.
+
+## 📚 Resources
+- Conventional Commits Official Site (https://www.conventionalcommits.org/)
+- Semantic Release (https://semantic-release.gitbook.io/)
+- Git Commit Message Guidelines (Chris Beams) (https://chris.beams.io/posts/git-commit/)

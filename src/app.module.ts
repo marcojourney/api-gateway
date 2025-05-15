@@ -1,17 +1,34 @@
-import { Module } from '@nestjs/common';
+import { 
+  MiddlewareConsumer,
+  Module,
+  NestModule
+} from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
-import { ClientProxyFactory, Transport } from '@nestjs/microservices';
-import { JwtService } from '@nestjs/jwt';
+import { CacheModule } from '@nestjs/cache-manager';
+import { HttpModule } from '@nestjs/axios';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { AppController } from './app.controller';
-import { OrderController } from './order.controller';
-import { ReportController } from './report.controller';
-import { UserController } from './user.controller';
-import { AuthController } from './auth.controller';
-import { Session } from './entities/session.entity';
+import * as http from 'http';
+import * as https from 'https';
+
+import { StockProxyController } from './stock.proxy.controller';
+import { Session, Config } from './entities';
+import { StockHttpService } from './services/stock-client.service';
+import { ConfigGateway } from './common/config/config.gateway';
+import { HeaderFilterMiddleware } from './common/middlewares/header-filter.middleware';
 
 @Module({
   imports: [
+    CacheModule.register({ ttl: 5000 }),
+    HttpModule.registerAsync({
+      imports: [ConfigModule],
+      useFactory: async (configService: ConfigService) => ({
+        timeout: configService.get('HTTP_TIMEOUT'),
+        maxRedirects: configService.get('HTTP_MAX_REDIRECTS'),
+        httpAgent: new http.Agent({ keepAlive: true }),
+        httpsAgent: new https.Agent({ keepAlive: true }),
+      }),
+      inject: [ConfigService],
+    }),
     ConfigModule.forRoot(),
     TypeOrmModule.forRoot({
       type: 'mysql',
@@ -21,86 +38,32 @@ import { Session } from './entities/session.entity';
       password: process.env.DB_PASSWORD,
       database: process.env.DB_NAME,
       entities: [
-        Session
+        Session,
+        Config
       ],
+      synchronize: true,
       logging: true,
+      retryAttempts: 10,
+      retryDelay: 3000
     }),
-    TypeOrmModule.forFeature([Session])
+    TypeOrmModule.forFeature([Config]),
+    HttpModule
   ],
   controllers: [
-    AppController, 
-    OrderController, 
-    UserController, 
-    AuthController, 
-    ReportController
+    StockProxyController
   ],
   providers: [
-    {
-      provide: 'BOOK_SERVICE',
-      inject: [ConfigService],
-      useFactory: (configService: ConfigService) => {
-        return ClientProxyFactory.create({
-          transport: Transport.TCP,
-          options: {
-            host: '127.0.0.1',
-            port: 3000
-          }
-        })
-      }
-    },
-    {
-      provide: 'ORDERS_SERVICE',
-      inject: [ConfigService],
-      useFactory: (configService: ConfigService) => {
-        return ClientProxyFactory.create({
-          transport: Transport.TCP,
-          options: {
-            host: '127.0.0.1',
-            port: 3001
-          }
-        })
-      }
-    },
-    {
-      provide: 'REPORT_SERVICE',
-      inject: [ConfigService],
-      useFactory: (configService: ConfigService) => {
-        return ClientProxyFactory.create({
-          transport: Transport.TCP,
-          options: {
-            host: '127.0.0.1',
-            port: 3002
-          }
-        })
-      }
-    },
-    {
-      provide: 'USER_SERVICE',
-      inject: [ConfigService],
-      useFactory: (configService: ConfigService) => {
-        return ClientProxyFactory.create({
-          transport: Transport.TCP,
-          options: {
-            host: '127.0.0.1',
-            port: 3003
-          }
-        })
-      },
-    },
-    {
-      provide: 'AUTH_SERVICE',
-      inject: [ConfigService],
-      useFactory: (configService: ConfigService) => {
-        return ClientProxyFactory.create({
-          transport: Transport.TCP,
-          options: {
-            host: '127.0.0.1',
-            port: 3004
-          }
-        })
-      }
-    },
-    JwtService
+    ConfigGateway,
+    StockHttpService
+  ],
+  exports: [
+    StockHttpService
   ]
 })
-export class AppModule {}
+export class AppModule implements NestModule {
+  configure(consumer: MiddlewareConsumer) {
+    consumer
+      .apply(HeaderFilterMiddleware)
+      .forRoutes('*');
+  }
+}
