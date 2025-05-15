@@ -14,7 +14,7 @@ import { StockProxyController } from './stock.proxy.controller';
 import { Session, Config } from './entities';
 import { StockHttpService } from './services/stock-client.service';
 import { ConfigGateway } from './common/config/config.gateway';
-import { HeaderFilterMiddleware } from './common/middleware/header-filter.middleware';
+import { HeaderFilterMiddleware } from './common/middlewares/header-filter.middleware';
 
 @Module({
   imports: [

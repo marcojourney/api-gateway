@@ -9,7 +9,16 @@
     "target": "ES2021",
     "sourceMap": true,
     "outDir": "./dist",
-    "baseUrl": "./",
+    "baseUrl": "./src",
+    "paths": {
+      "@common/*": ["common/*"],
+      "@interceptors/*": ["common/interceptors/*"],
+      "@middlewares/*": ["common/middlewares/*"],
+      "@controllers/*": ["controllers/*"],
+      "@services/*": ["services/*"],
+      "@types/*": ["types/*"],
+      "@config/*": ["config/*"]
+    },
     "incremental": true,
     "skipLibCheck": true,
     "strictNullChecks": false,

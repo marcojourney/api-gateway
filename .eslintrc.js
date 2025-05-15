@@ -5,6 +5,13 @@ module.exports = {
     tsconfigRootDir: __dirname,
     sourceType: 'module',
   },
+  settings: {
+    'import/resolver': {
+      typescript: {
+        project: './tsconfig.json', // point to your tsconfig
+      },
+    },
+  },
   plugins: ['@typescript-eslint/eslint-plugin'],
   extends: [
     'plugin:@typescript-eslint/recommended',
