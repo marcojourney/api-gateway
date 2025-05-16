@@ -17,6 +17,7 @@ import * as https from 'https';
 import { Session, Config } from '@entities/index';
 import { StockHttpService } from '@services/index';
 import { ConfigGateway } from './common/config/config.gateway';
+import { CsrfController } from '@controllers/csrf.controller';
 import { HeaderFilterMiddleware } from '@middlewares/index';
 import { AdvancedThrottlerGuard } from '@common/guards/advanced-throttler.guard';
 import { AppController, ConfigController, StockProxyController } from '@controllers/index';
@@ -83,6 +84,7 @@ import { AppController, ConfigController, StockProxyController } from '@controll
     HttpModule
   ],
   controllers: [
+    CsrfController,
     AppController,
     ConfigController,
     StockProxyController
