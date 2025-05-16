@@ -3,7 +3,7 @@ import { Request, Response } from 'express';
 import { StockHttpService } from './services/stock-client.service';
 import { maskSensitiveData } from './common/util';
 
-@Controller()
+@Controller('g8w4y-32as9v')
 export class StockProxyController {
   private readonly logger = new Logger(StockProxyController.name, { timestamp: true });
   
@@ -21,7 +21,7 @@ export class StockProxyController {
 
       const responseData = await this.stockHttpService.forwardRequest(
         req.method,
-        req.path,
+        req.path.replace(`/${process.env.GATEWAY_PREFIX}`, ''),
         req.body,
         req.query,
         req.headers,

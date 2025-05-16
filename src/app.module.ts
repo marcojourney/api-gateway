@@ -15,6 +15,7 @@ import { Session, Config } from './entities';
 import { StockHttpService } from './services/stock-client.service';
 import { ConfigGateway } from './common/config/config.gateway';
 import { HeaderFilterMiddleware } from './common/middlewares/header-filter.middleware';
+import { CsrfController } from '@controllers/csrf.controller';
 
 @Module({
   imports: [
@@ -50,7 +51,8 @@ import { HeaderFilterMiddleware } from './common/middlewares/header-filter.middl
     HttpModule
   ],
   controllers: [
-    StockProxyController
+    StockProxyController,
+    CsrfController,
   ],
   providers: [
     ConfigGateway,
