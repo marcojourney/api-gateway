@@ -66,13 +66,13 @@ This API Gateway is enhanced with several production-grade features to ensure be
   - Methods: `GET, POST, PUT, DELETE, OPTIONS`
   - Headers: `Content-Type, Authorization`
 
-## 🔒 CSRF Protection
+### 🔒 CSRF Protection
 
-This repository implements **CSRF (Cross-Site Request Forgery) protection** using the `csurf` middleware. It helps secure routes by generating and validating CSRF tokens, preventing unauthorized commands from being executed on behalf of authenticated users.
+  This repository implements **CSRF (Cross-Site Request Forgery) protection** using the `csurf` middleware. It helps secure routes by generating and validating CSRF tokens, preventing unauthorized commands from being executed on behalf of authenticated users.
 
-- Middleware: [`csurf`](https://github.com/marcojourney/csurf)
-- Protection enabled on sensitive routes
-- Tokens are stored via cookies or session, depending on the configuration
+  - Middleware: [`csurf`](https://github.com/marcojourney/csurf)
+  - Protection enabled on sensitive routes
+  - Tokens are stored via cookies or session, depending on the configuration
 
 ✅ **Security-first design** ensures protection against common web attack vectors.
 
