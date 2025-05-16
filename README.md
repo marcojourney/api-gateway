@@ -46,6 +46,48 @@ ERP HUB API Gateway is a centralized gateway service built with NestJS to handle
 - 📈 **Scalable Architecture** designed for enterprise ERP platforms
 
 
+## 🔐 Security & Stability Features
+
+This API Gateway is enhanced with several production-grade features to ensure better security, stability, and resilience:
+
+### 🚦 Rate Limiting
+
+- **Purpose:** Prevent abuse, brute-force attacks, and excessive requests from clients.
+- **Implementation:** Utilizes `@nestjs/throttler` with `Redis` as distributed storage.
+- **Configurable Values:**
+  - `THROTTLE_TTL` – Time-to-live in seconds (e.g., `60`)
+  - `THROTTLE_LIMIT` – Max requests within the TTL (e.g., `5`)
+- **Tracker Logic:** Supports custom tracking via user ID, API key, or IP.
+
+### 🌐 Cross-Origin Resource Sharing (CORS)
+
+- **Purpose:** Allows controlled access from different origins (e.g., frontend apps).
+- **Implementation:** Configured using NestJS CORS setup.
+- **Settings:**
+  - Origins allowed: `*` (or specific domains)
+  - Methods: `GET, POST, PUT, DELETE, OPTIONS`
+  - Headers: `Content-Type, Authorization`
+
+### 🕵️‍♂️ Sensitive Data Masking
+
+- **Purpose:** Prevent sensitive data (e.g., passwords, tokens) from being exposed in logs or responses.
+- **Implementation:**
+  - Middleware or interceptor masks fields such as:
+    - `password`
+    - `token`
+    - `pin`
+    - `creditCardNumber`
+  - Can be extended with custom masking rules.
+
+### ✅ Health Check Endpoint
+
+- **Endpoint:** `GET /health`
+- **Rate Limited:** Yes – 5 requests per minute
+- **Response:**
+  ```json
+  { "ok": true }
+
+
 ## 📦 Modules Communicated (via HTTP)
 
 - `Stock-Service`
