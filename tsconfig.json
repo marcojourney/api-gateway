@@ -14,8 +14,11 @@
       "@common/*": ["common/*"],
       "@interceptors/*": ["common/interceptors/*"],
       "@middlewares/*": ["common/middlewares/*"],
+      "@guards/*": ["common/guards/*"],
+      "@const/*": ["common/const/*"],
       "@controllers/*": ["controllers/*"],
       "@services/*": ["services/*"],
+      "@entities/*": ["entities/*"],
       "@types/*": ["types/*"],
       "@config/*": ["config/*"]
     },
