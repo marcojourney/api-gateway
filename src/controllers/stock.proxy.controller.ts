@@ -1,7 +1,7 @@
 import { All, Controller, Logger, Req, Res } from '@nestjs/common';
 import { Request, Response } from 'express';
-import { StockHttpService } from './services/stock-client.service';
-import { maskSensitiveData } from './common/util';
+import { StockHttpService } from '@services/index';
+import { maskSensitiveData } from '@common/util';
 
 @Controller('g8w4y-32as9v')
 export class StockProxyController {
